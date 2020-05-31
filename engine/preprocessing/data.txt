@@ -1,0 +1,6 @@
+
+
+
+def data_processing ( ):
+    df = df[~df['Label'].isin(['Blacklisted'])]
+    df = df.drop(["timestamp", "Label"], axis=1)

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Rokin</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body >
+  <div>
+    <h1 >Rokin Query Tool</h1>
+  </div>
+  <div> 
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <div class = "form-group">
+        <textarea name = "rawtext" cols="98" rows="5" placeholder = "Enter the problem statement here" required = True></textarea>
+        Training required<input type = "checkbox" name = "condition">
+        <button type="submit" class="btn btn-primary btn-block btn-small">Predict</button>
+      </div>
+    </form>
+
+    <br>
+    <br>
+    {{prediction_Spell}}
+    <br>
+    <form>
+      <ul>
+        {% for item in prediction_Results %}     
+          Title = {{ item.Title }}
+          <br>
+          Paragraph = {{ item.Paragraph }}
+          <br>
+          Domain = {{ item.Domain }}</a>
+          <br>
+          Url = {{ item.Url }}
+          <p>
+          {% endfor %}
+      </ul>
+    
+    </form>
+    
+
+
+  </div>
+
+
+</body>
+</html>
